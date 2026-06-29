@@ -8,6 +8,7 @@ let loaded = false
 const serverApp = {
     main: document.querySelector(".main"),
     main_loader: document.querySelector(".main-loader"),
+    main_loader_error: document.querySelector(".main-loader-error"),
     server_sidebar_content: document.querySelector(".server-sidebar-content"),
     sidebar: document.querySelector(".sidebar"),
     sidebar_header: document.querySelector(".sidebar-header"),
@@ -38,7 +39,7 @@ if (window.startup && window.bridge) {
         setTimeout(()=>serverApp.main_loader.classList.add("finished"),1000);
     });
     window.bridge.tokenError(()=>{
-       serverApp.main_loader.querySelector("span").innerHTML = "Invalid token detected, please re-pair."
+        serverApp.main_loader_error.classList.add("visible");
     });
     window.bridge.updateServers((data)=>{
         servers = data;
@@ -54,10 +55,11 @@ if (window.startup && window.bridge) {
             badge.onclick = () =>{
                 if (!badge.classList.contains("active")) {
                     if (!serverSwapCD) {
+                        serverSwapCD=true;
+                        serverApp.sidebar_header.querySelector(".sidebar-server-name").innerHTML=server.info.name;
                         document.querySelectorAll(".server-badge").forEach(b=>b.classList.remove("active"));
                         badge.classList.add("active");
                         openServer(key);
-                        serverSwapCD=true;
                         setTimeout(()=>serverSwapCD = false,5000);
                     } else {
                         showCursorToast("Please wait")
@@ -71,7 +73,7 @@ if (window.startup && window.bridge) {
         });
     });
     function openServer(key) {
-        serverApp.main_loader.querySelector("span").innerHTML = "Reconnecting to Rust+."
+        serverApp.main_loader_error.classList.remove("visible");
         serverApp.main_loader.classList.remove("finished");
         window.bridge.requestServerChange(key);
     }
