@@ -66,6 +66,7 @@ class ServerHandler extends EventEmitter {
             playerId: body.playerId,
             playerToken: body.playerToken,
             devices: {},
+            settings: {},
             ctx: {
                 admins: {}
             }
