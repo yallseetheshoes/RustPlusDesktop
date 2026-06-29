@@ -33,6 +33,9 @@ if (window.startup && window.bridge) {
         if (activeBadge) activeBadge.classList.add("active");
         setTimeout(()=>serverApp.main_loader.classList.add("finished"),1000);
     });
+    window.bridge.tokenError(()=>{
+       serverApp.main_loader.querySelector("span").innerHTML = "Invalid token detected, please re-pair."
+    });
     window.bridge.updateServers((data)=>{
         servers = data;
         serverApp.server_sidebar_content.innerHTML = "";
@@ -64,6 +67,7 @@ if (window.startup && window.bridge) {
         });
     });
     function openServer(key) {
+        serverApp.main_loader.querySelector("span").innerHTML = "Reconnecting to Rust+."
         serverApp.main_loader.classList.remove("finished");
         window.bridge.requestServerChange(key);
     }
