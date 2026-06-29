@@ -279,7 +279,7 @@ html,body {
     font-size: 50px;
 }
 .main-loader-error .main-header-error {
-    font-size: 30px;
+    font-size: 20px;
 }
 .main-content {
     display:grid;
