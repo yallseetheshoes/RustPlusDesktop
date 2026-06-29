@@ -137,8 +137,15 @@ html,body {
 .sidebar-item:hover {
     background: rgba(46,42,37,0.4);
 }
-.sidebar-item.settings {
+.server-settings-button {
     margin-top: auto;
+    background: transparent;
+    border: solid 1px #2e2a25;
+    width: 230px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 4px;
 }
 
 .server-sidebar {
@@ -262,3 +269,26 @@ html,body {
 
 
 
+
+
+
+.server-settings-overlay {
+    position: absolute;
+    inset:0;
+    z-index: 2998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.main-settings-overlay {
+    position: fixed;
+    inset:0;
+    z-index: 2999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.visible {
+    opacity: 1;
+    pointer-events: all;
+}
