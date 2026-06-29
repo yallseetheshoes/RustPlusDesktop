@@ -11,6 +11,10 @@ const serverApp = {
     server_sidebar_content: document.querySelector(".server-sidebar-content"),
     sidebar: document.querySelector(".sidebar"),
     sidebar_header: document.querySelector(".sidebar-header"),
+    main_settings_overlay: document.querySelector(".main-settings-overlay"),
+    main_settings_button: document.querySelector(".main-settings-button"),
+    server_settings_overlay: document.querySelector(".server-settings-overlay"),
+    server_settings_button: document.querySelector(".server-settings-button"),
 }
 
 let servers;
