@@ -17,7 +17,7 @@ electron.contextBridge.exposeInMainWorld("bridge",{
         electron.ipcRenderer.send("bridge:requestServerChange",serverKey);
     },
     tokenError(callback) {
-        electron.ipcRenderer.on("bridge:tokenError",(_,data)=>callback(data));
+        electron.ipcRenderer.on("bridge:tokenError",(_)=>callback());
 
     }
 })
