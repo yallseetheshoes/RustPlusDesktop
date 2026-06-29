@@ -35,7 +35,6 @@ electron.app.on("ready",async ()=>{
     });
 
     ServerHandler.on("server-changed",(newServer)=>{
-
         rustPlus.connect(
             {
                 ip: newServer.ip,
@@ -49,14 +48,18 @@ electron.app.on("ready",async ()=>{
 
     //tiny wait cuz of UX idk
         setTimeout(async()=>{
-            ServerHandler.select(ServerHandler.fetchFirstKey());
+            const firstKey = ServerHandler.fetchFirstKey();
+            if (firstKey) {
+                ServerHandler.select(firstKey);
+            }
+
             if (Config.get("OpenDevToolOnStartup")) {
                 mainWindow.webContents.openDevTools();
             }
             let progress = {fcm:0,rustplus:0};
             progress.fcm = 10;
             mainWindow.webContents.send("startup:update",progress);
-            fcmClient.on("alarm",(body)=>{
+            fcmClient.on("alarm",()=>{
                 Logger.log("[FCM] \x1b[5;31mRaid alarm\x1b[0m")
             });
             await fcmClient.start();
@@ -65,15 +68,11 @@ electron.app.on("ready",async ()=>{
             progress.rustplus = 20;
             mainWindow.webContents.send("startup:update",progress);
             const server = ServerHandler.selectedServerData
-            Logger.log(`[MAIN] SELECTED SERVER: ${JSON.stringify(server)}`);
             mainWindow.webContents.send("bridge:updateServers",ServerHandler.fetchAll())
             setTimeout(()=>{
                 mainWindow.webContents.send("bridge:setCurrentServer",server);
-            },1000)
-            rustPlus.on("connected",()=>{
                 progress.rustplus = 100;
                 mainWindow.webContents.send("startup:update",progress);
-            })
+            },1000)
         },2000);
-
 });
