@@ -31,7 +31,6 @@ class ServerHandler extends EventEmitter {
         return this.fetchAll()[this.selectedServer]
     }
     select(key) {
-        const all = this.fetchAll();
         this.selectedServer = key ?? null;
         this.emit("server-changed",this.selectedServerData);
         return this.selectedServer;
