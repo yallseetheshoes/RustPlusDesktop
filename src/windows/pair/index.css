@@ -1,0 +1,34 @@
+body {
+    font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Roboto Mono', Menlo, Monaco, monospace;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.app {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+
+}
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+button {
+    cursor: pointer;
+    border: 0.5px solid #2e2a25;
+    padding: 0 14px;
+    height: 30px;
+    background: transparent;
+}
+.warning-text {
+    font-size: 15px;
+    color: #e66c6e;
+}

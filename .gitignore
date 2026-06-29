@@ -1,0 +1,7 @@
+
+node_modules/
+.idea/
+#token stuff
+BM.json
+servers.json
+rustplus.config.json
