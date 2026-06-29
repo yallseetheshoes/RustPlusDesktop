@@ -29,7 +29,7 @@ class RustPlusClient extends EventEmitter {
             this.connected = true;
             this.client.getTeamInfo((team_info)=>{
                 if (team_info.response?.error) {
-                    Logger.log(`\x1b[31m[RUST+] INVALID TOKEN DETCETED\x1b[0m`)
+                    Logger.log(`\x1b[31m[RUST+] INVALID TOKEN DETECTED\x1b[0m`)
                     electron.webContents.getAllWebContents().forEach(wc => {wc.send("bridge:tokenError");})
                 } else {
                     Logger.log(`[RUST+] NEW TEAM INFO: ${JSON.stringify(team_info.response.teamInfo,null,2)}`)
