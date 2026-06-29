@@ -33,7 +33,7 @@
 
             </div>
             <div class="server-sidebar-footer">
-                <div class="server-badge" data-popup-right="Settings">
+                <div class="server-badge main-settings-button" data-popup-right="Settings">
                     <span>⚙</span>
                 </div>
             </div>
@@ -53,11 +53,14 @@
                     <span>Devices</span>
                 </button>
             </div>
-            <button class="sidebar-item settings">
+            <button class="server-settings-button">
                 <span>Settings</span>
             </button>
         </div>
         <div class="main">
+            <div class="server-settings-overlay">
+                <div class="server-settings-content"></div>
+            </div>
             <div class="main-loader finished">
                 <span>Reconnecting to Rust+</span>
                 <div class="spinner"></div>
@@ -80,6 +83,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="main-settings-overlay">
+
         </div>
     </div>
 </body>
