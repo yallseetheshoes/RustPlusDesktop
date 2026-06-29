@@ -247,7 +247,7 @@ html,body {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 5000;
+    z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,6 +259,27 @@ html,body {
 .main-loader.finished {
     opacity: 0;
     pointer-events:none;
+}
+.main-loader-error {
+    background: #141210;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+.main-loader-error .main-exclamation-error {
+    color: #e66c6e;
+    font-size: 50px;
+}
+.main-loader-error .main-header-error {
+    font-size: 30px;
 }
 .main-content {
     display:grid;
