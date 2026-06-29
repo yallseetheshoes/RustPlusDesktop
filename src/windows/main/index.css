@@ -109,6 +109,13 @@ html,body {
     padding: 10px;
     user-select:none;
 }
+.sidebar-server-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align:center;
+}
 .sidebar-content {
     gap:4px;
 }
