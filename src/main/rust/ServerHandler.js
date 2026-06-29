@@ -35,6 +35,7 @@ class ServerHandler extends EventEmitter {
         this.emit("server-changed",this.selectedServerData);
         return this.selectedServer;
     }
+
     fetchFirstKey() {
         const json = this.#readJSON();
         const keys = Object.keys(json);
